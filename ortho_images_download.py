@@ -21,6 +21,7 @@ import argparse
 import traceback
 from owslib.wmts import WebMapTileService
 
+
 tmp_folder = f'{tempfile.gettempdir()}/wmts-downloader'
 output_folder = 'output'
 
@@ -37,6 +38,10 @@ parser = argparse.ArgumentParser(
     description='Script to download images from a WMTS service')
 parser.add_argument('url', type=str, metavar='WMTS server url',
                     help='Server url (default: %(default)s)')
+parser.add_argument('--username', type=str, metavar='Username', required=True,
+                    help='Username (default: %(default)s)')
+parser.add_argument('--password', type=str, metavar='Password', required=True,
+                    help='Password (default: %(default)s)')
 parser.add_argument('--layer', type=str, metavar='Layer name', required=True,
                     help='Layer name (default: %(default)s)')
 parser.add_argument('--format', type=str, metavar='Image format', default=format,
@@ -78,6 +83,8 @@ def init():
             os.makedirs(tmp_folder)
 
         url = args.url
+        username = args.username
+        password = args.password
         format = args.format
         zoom = int(args.zoom)
         proj = args.proj
@@ -94,7 +101,7 @@ def init():
         print(f'Connecting to server: {url}')
 
         try:
-            wmts = WebMapTileService(url, username="dopdgmViewer", password="dgm2018dop06viewer")
+            wmts = WebMapTileService(url, username=username, password=password)
         except Exception as error:
             print(f"-> Can't connect to server")
             print(f'--> PROCESS WAS ABORTED WITH ERRORS <--')
@@ -312,3 +319,6 @@ def write_image(file_name, extension, img):
     out = open(file_path, 'wb')
     out.write(img.read())
     out.close()
+
+
+init()
