@@ -2,6 +2,9 @@
 
 Visualizations, statistics and more data work about urban trees and with the tree cadastre of the city of Konstanz.
 
+![tree_detect](https://user-images.githubusercontent.com/33206086/208263579-fa2c576d-c834-4f5d-9f9d-355e5b5d1348.jpg)
+
+
 ## Data
 
 ### Tree Cadastre of the City of Konstanz
