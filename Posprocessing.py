@@ -51,6 +51,6 @@ for fF in formFactors:
     #image = image[:,:,::-1]
     image = visualize.plot_predictions(image, df_filter, color=(0, 165, 255), thickness=2)
     plt.imshow(image)#[:,:,::-1]
-    plt.savefig(r"C:\Hackathon Stadtbaeume\Results\Formfactor_"+str(fF)+".png",dpi=400)
+    plt.savefig(r"C:\Hackathon Stadtbaeume\Results\Formfactor_"+str(fF)+".png",dpi=1000)
 
 #plt.show()
