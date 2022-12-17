@@ -44,7 +44,7 @@ def tree_detect(
         raster_path=args.raster_path,
         patch_size=args.patch_size,
         patch_overlap=args.patch_overlap,
-        use_soft_nms=True,
+        use_soft_nms=args.use_soft_nms,
         sigma=0.01,
         thresh=0.1,
         return_plot=False
@@ -67,7 +67,7 @@ def tree_detect(
     trees["ycenter_coord"] = trees["geometry"].centroid.y
 
     # compute diameter
-    trees["diameter"] = trees.apply(lambda tree: max(geopy.distance.distance((tree["xmin_coord"], tree["ymin_coord"]), (tree["xmax_coord"], tree["ymin_coord"])).m, geopy.distance.distance((tree["xmin_coord"], tree["ymin_coord"]), (tree["xmin_coord"], tree["ymax_coord"])).m), axis=1)
+    trees["diameter"] = trees.apply(lambda tree: (geopy.distance.distance((tree["xmin_coord"], tree["ymin_coord"]), (tree["xmax_coord"], tree["ymin_coord"])).m + geopy.distance.distance((tree["xmin_coord"], tree["ymin_coord"]), (tree["xmin_coord"], tree["ymax_coord"])).m) / 2, axis=1)
 
     # outputs
     trees = trees.astype({"xmin": int, "ymin": int, "xmax": int, "ymax": int})
@@ -115,6 +115,12 @@ def get_parser():
         type=float,
         default=0.3,
         help="Patch overlap for tiles (default: 0.3)"
+    )
+    parser.add_argument(
+        "--use-soft-nms",
+        type=bool,
+        default=True,
+        help="Use Soft NMS (default: False)"
     )
     parser.add_argument(
         "--outputs",
