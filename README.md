@@ -24,3 +24,4 @@ Visualizations, statistics and more data work about urban trees and with the tre
   - [urban tree canopy](https://data.sfgov.org/Energy-and-Environment/SF-Urban-Tree-Canopy/55pv-5zcc)
   - [related data sets](https://data.sfgov.org/browse?q=tree&sortBy=relevance)
 
+- [Jupyter notebook](https://nbviewer.org/github/sebastian-nagel/introduction-to-python/blob/main/2_structured_data_tree_cadastre_konstanz.ipynb) reading the tree cadastre data as sample dataset for a Python programming workshop (statistics, tree name translations, plotting)
