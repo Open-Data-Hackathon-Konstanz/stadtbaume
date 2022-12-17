@@ -10,6 +10,10 @@ Visualizations, statistics and more data work about urban trees and with the tre
 - [ArcGIS browser](https://open-geodaten-konstanz-gis.opendata.arcgis.com/datasets/b5d600268d87451db3faf41463c69fd3_0/explore?location=47.671212%2C9.179660%2C12.73)
   - export/download as CSV, GeoJSON, KML, Shapefile
 
+## Results
+
+- [Jupyter notebook -statistics, visualizations](./kn_tree_cadastre_statistics.ipynb)
+
 
 ## Links / Related
 
@@ -24,3 +28,4 @@ Visualizations, statistics and more data work about urban trees and with the tre
   - [urban tree canopy](https://data.sfgov.org/Energy-and-Environment/SF-Urban-Tree-Canopy/55pv-5zcc)
   - [related data sets](https://data.sfgov.org/browse?q=tree&sortBy=relevance)
 
+- [Jupyter notebook](https://nbviewer.org/github/sebastian-nagel/introduction-to-python/blob/main/2_structured_data_tree_cadastre_konstanz.ipynb) reading the tree cadastre data as sample dataset for a Python programming workshop (statistics, tree name translations, plotting)
