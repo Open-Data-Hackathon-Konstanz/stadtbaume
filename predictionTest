@@ -1,0 +1,49 @@
+from deepforest import main
+from deepforest import get_data
+import os
+import matplotlib.pyplot as plt
+import numpy as np
+
+model = main.deepforest()
+model.use_release()
+
+#imgPath = "C:\Hackathon Stadtbaeume\Data\DOP_20_C_ADV_25832_Quad_S.tif"
+imgPath = "C:\Hackathon Stadtbaeume\Data\TestEdeka3000x3000.jpg"
+
+# Show image or use Boxes output?
+showIm = 1
+
+#Filter parameters
+threshold_NMS = 0.1
+sigma_NMS = 0.01
+patchSize = 500
+patchOverlap = 0.3
+
+
+#threshold_NMSes = [0.1]
+#sigma_NMSes = np.linspace(0,0.06,7)
+
+
+#for threshold_NMS in threshold_NMSes:
+if showIm:
+    retPlot = True
+else:
+    retPlot = False
+imOrBox = model.predict_tile(raster_path = imgPath,
+                                        patch_size = patchSize, #default 500
+                                        patch_overlap = patchOverlap, #default 0.3
+                                        use_soft_nms=True,
+                                        sigma=sigma_NMS,
+                                        thresh=threshold_NMS,
+                                        return_plot = retPlot)
+if showIm:
+    plt.imshow(imOrBox) #[:,:,::-1]
+    #plt.show()
+    
+    #Save figure with filter parameters
+    fname = r"C:\Hackathon Stadtbaeume\Testfigures\\" + "Edeka3000x3000" + "_threshNMS" + str(threshold_NMS) + "_sigmaNMS" + str(sigma_NMS) + "_patchSize"+ str(patchSize) + "_patchOverlap" + str(patchOverlap)+ ".png"
+    plt.savefig(fname,dpi=80)
+    #plt.savefig(fname,dpi=167)
+
+else:
+    print(imOrBox)
